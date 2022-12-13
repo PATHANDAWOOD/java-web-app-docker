@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: dev-test
-  name: maven-web-application
+  name: java-web-app-docker
   labels:
-    app: maven-web-application
+    app: java-web-app-docker
     version: latest
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: maven-web-application
+      app: java-web-app-docker
       version: latest
   template:
     metadata:
-      name: maven-web-application
+      name: java-web-app-docker
       labels:
-        app: maven-web-application
+        app: java-web-app-docker
         version: latest
     spec:
       containers: 
-      - name: maven-web-application
+      - name: java-web-app-docker
         image: 44.192.24.140:8082/imageversion
         imagePullPolicy: Always
         ports:
@@ -33,9 +33,9 @@ apiVserion: v1
 kind: Service
 metadata:
   namespace: dev-test
-  name: maven-web-application
+  name: java-web-app-docker
   labels:
-    app: maven-web-application
+    app: java-web-app-docker
     version: latest 
 spec:
   type: NodePort
@@ -44,5 +44,5 @@ spec:
     targetPort: 8080
     nodePort: 32333
   selector:
-    app: maven-web-application
+    app: java-web-app-docker
     version: latest 
