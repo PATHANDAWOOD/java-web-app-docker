@@ -1,4 +1,2 @@
-FROM openjdk:latest
-RUN mkdir java-jar
-COPY target/java-web-app-1.0.jar java-jar/
-ENTRYPOINT ["java","-jar","java-jar/java-web-app-1.0.jar"]
+FROM tomcat:8.0.20-jre8
+COPY target/java-web-app*.war /usr/local/tomcat/webapps/java-web-app.war
